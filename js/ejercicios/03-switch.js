@@ -31,6 +31,9 @@ Cree un programa al estilo de un cajero automatico con las siguientes opciones:
 let saldo = 10000;
 
 switch(opcion){
+
+    //se puede poner otra opcion con el caso 1 ej: 
+    case "saldo":
     case "1":
         alert("Su saldo es $ "+saldo);
         break;
@@ -52,7 +55,9 @@ switch(opcion){
         if(montoExtraer<=saldo){
             saldo = saldo - montoExtraer;
             document.writeln(`El monto a extraer es: $${montoExtraer}, tu saldo actual es: $${saldo}`)
-
+        }
+        else{
+            alert("No tienes esa cantidad de dinero");
         }
 
         break;
