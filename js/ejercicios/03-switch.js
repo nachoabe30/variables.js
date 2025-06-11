@@ -35,13 +35,12 @@ switch(opcion){
         alert("Su saldo es $ "+saldo);
         break;
     case "2":
-        const deposito = Number(prompt("Ingrese la cantidad de dinero que desea ingresar"))
+        const deposito = Number(prompt("Ingrese la cantidad de dinero que desee"))
         if(deposito<0 && deposito>200000){
             console.log(deposito);
         saldo = saldo + deposito;
         //Alt gr + comillas baticks ``, se puede hacer de esta forma el llamado de las variables
         document.writeln(`Depositaste $ ${deposito}, tu saldo es: $${saldo}`) 
-
         }
         else{
             alert("Ingresasaste un monto invalido")
@@ -49,6 +48,13 @@ switch(opcion){
     break;
 
     case "3":
+        const montoExtraer = Number(prompt("Ingresa el monto a extrer"));
+        if(montoExtraer<=saldo){
+            saldo = saldo - montoExtraer;
+            document.writeln(`El monto a extraer es: $${montoExtraer}, tu saldo actual es: $${saldo}`)
+
+        }
+
         break;
     default:
         alert("Ingresaste una opcion invalida");
