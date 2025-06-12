@@ -12,7 +12,7 @@ agregar alguna linea que haga que la condicion logica se deje de cumplir en algu
 let renglon = 1;
 while(renglon <= 50){
     document.writeln("<p>Renglon ${renglon}</p>");
-    renglon ++;
+    renglon ++; // renglon = renglon +1
 
 }
 
