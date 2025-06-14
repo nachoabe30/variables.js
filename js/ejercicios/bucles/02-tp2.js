@@ -10,37 +10,24 @@ Luego mostrar la calificación en un alert según los siguientes rangos de nota:
 
 Si ingreso un número que no esté dentro del rango de 0 a 10 mostrar un mensaje de “número erróneo”. Si el número ingresado no es válido mostrar el mensaje “Introduce un número válido”.
  */ 
+const numero = parseInt(prompt("Ingrese la cantidad de notas a calificar: "));
 
-let continuarCalificando = true; 
-
-do {
-    let notaCalificar; 
-    while (true) {
-        notaCalificar = parseInt(prompt("Ingrese la nota a calificar (entre 0 y 10):"));
-        if (notaCalificar >= 0 && notaCalificar <= 10) {
-            break;
-        } else {
-            alert("Número incorrecto. Por favor, ingrese un número válido entre 0 y 10.");
+for(let i=0; i<numero; i++){
+    let notaCalificar = parseInt(prompt(`Ingrese la nota a ser calificada:`));
+        if(notaCalificar >=0 && notaCalificar<=2){
+            alert("Nota muy eficiente");
+        }else if(notaCalificar>=3 && notaCalificar<=4){
+            alert("Nota insuficiente");
+        }else if(notaCalificar>=5 && notaCalificar<=6){
+            alert("Nota suficiente");
+        }else if(notaCalificar == 7){
+            alert("Nota buena");
+        }else if(notaCalificar>=8 && notaCalificar<=9){
+            alert("Nota notable");
+        }else if(notaCalificar == 10){
+            alert("Nota sobresaliente");
+        }else if(notaCalificar >= 11){
+            alert("Número erróneo");
         }
-    }
+}       
 
-    if (notaCalificar >= 0 && notaCalificar <= 2) {
-        alert(`La nota ${notaCalificar} es muy deficiente`);
-    } else if (notaCalificar >= 3 && notaCalificar <= 4) {
-        alert(`La nota ${notaCalificar}, es Insuficiente`);
-    } else if (notaCalificar >= 5 && notaCalificar <= 6) {
-        alert(`La nota ${notaCalificar}, es Suficiente `);
-    } else if (notaCalificar == 7) {
-        alert(`La nota ${notaCalificar}, Bien`);
-    } else if (notaCalificar >= 8 && notaCalificar <= 9) {
-        alert(`La nota ${notaCalificar}, es Notable`);
-    } else if (notaCalificar == 10) {
-        alert(`La nota ${notaCalificar}, Es sobresaliente`);
-    }
-
-
-    continuarCalificando = confirm("¿Desea calificar otra nota?");
-
-} while (continuarCalificando); 
-
-alert("¡Gracias por usar el calificador de notas!");
