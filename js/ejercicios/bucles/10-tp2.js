@@ -31,6 +31,3 @@ document.writeln(`<table class='table table-striped'>
         document.writeln(`</tr>`);
     }
 document.writeln(`</tbody></table>`);
-
-
-//dibujar el valor de la tabla
