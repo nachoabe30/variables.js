@@ -24,46 +24,46 @@ Cree un programa al estilo de un cajero automatico con las siguientes opciones:
         alert("opcion no valida");
 } */
 
-        const opcion = prompt(
-  "Seleccione una opcion: 1- consultar el saldo, 2-Ingresar dinero, 3-Extraer dinero"
-);
+          //confirm devuelve un valor booleano diciendo si u n0
+
 
 let saldo = 10000;
+let opcion; // Declare opcion here
 
-switch(opcion){
+do {
+    opcion = prompt("Seleccione una opcion:\n1- Consultar el saldo\n2- Ingresar dinero\n3- Extraer dinero"); // Get user input for option
 
-    //se puede poner otra opcion con el caso 1 ej: 
-    case "saldo":
-    case "1":
-        alert("Su saldo es $ "+saldo);
-        break;
-    case "2":
-        const deposito = Number(prompt("Ingrese la cantidad de dinero que desee"))
-        if(deposito<0 && deposito>200000){
-            console.log(deposito);
-        saldo = saldo + deposito;
-        //Alt gr + comillas baticks ``, se puede hacer de esta forma el llamado de las variables
-        document.writeln(`Depositaste $ ${deposito}, tu saldo es: $${saldo}`) 
-        }
-        else{
-            alert("Ingresasaste un monto invalido")
-        }
-    break;
+    switch (opcion) {
+        case "saldo":
+        case "1":
+            alert("Su saldo es $ " + saldo);
+            break;
 
-    case "3":
-        const montoExtraer = Number(prompt("Ingresa el monto a extrer"));
-        if(montoExtraer<=saldo){
-            saldo = saldo - montoExtraer;
-            document.writeln(`El monto a extraer es: $${montoExtraer}, tu saldo actual es: $${saldo}`)
-        }
-        else{
-            alert("No tienes esa cantidad de dinero");
-        }
+        case "2":
+            const deposito = Number(prompt("Ingrese la cantidad de dinero que desee depositar:"));
+            // Corrected validation: deposito must be positive and within a reasonable limit
+            if (deposito > 0 && deposito <= 200000) {
+                saldo = saldo + deposito;
+                alert(`Depositaste $ ${deposito}, tu saldo es: $${saldo}`);
+            } else {
+                alert("Ingresaste un monto inválido. El monto debe ser positivo y no exceder $200,000.");
+            }
+            break;
 
-        break;
-    default:
-        alert("Ingresaste una opcion invalida");
+        case "3":
+            const montoExtraer = Number(prompt("Ingresa el monto a extraer:"));
+            // Basic validation for withdrawal
+            if (montoExtraer > 0 && montoExtraer <= saldo) { // Ensure positive withdrawal and sufficient funds
+                saldo = saldo - montoExtraer;
+                alert(`El monto extraído es: $${montoExtraer}, tu saldo actual es: $${saldo}`);
+            } else if (montoExtraer <= 0) {
+                alert("El monto a extraer debe ser positivo.");
+            } else {
+                alert("No tienes suficiente dinero para realizar esta extracción.");
+            }
+            break;
 
-
-
-}
+        default:
+            alert("Ingresaste una opción inválida.");
+    }
+} while (confirm("¿Quieres realizar otra operación?")); // Correct placement of while condition
