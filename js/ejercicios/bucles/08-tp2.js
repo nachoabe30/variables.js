@@ -11,16 +11,11 @@ Crea script para generar pirámide siguiente con los números del 1 al número q
 
 */
 
-let numero = parseInt(prompt("Ingrese un numero entre 1 y 50"))
+const numero = parseInt(prompt("Ingresa un numero del 1 al 50: "));
 
-if(numero > 50  && numero < 1){
-    console.log("El numero ingresado no es valido")
-}else{
-    for (let i=0; i<numero; i++){
-        let cadena = ""
-        for (let j=0; j<numero; j++){
-            cadena += j+1
-        }
-    }
-    document.writeln(cadena)
+for(let fila=0; fila<numero; fila++ ){
+   for(let columna=0; columna<=fila; columna++){
+    document.writeln(columna +1);
+   }
+document.writeln("<br>");
 }
