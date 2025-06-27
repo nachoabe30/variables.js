@@ -11,6 +11,7 @@ for (let i = 0; i < lanzamientos; i++) {
     const dado2 = Math.floor(Math.random() * 6) + 1; // Dado 2
     const suma = dado1 + dado2; // Suma de los dos dados
     resultados[suma - 2]++; // Incrementar el contador para la suma obtenida
+    console.log(`Lanzamiento ${i + 1}: Suma ${suma}`);
 }
 document.writeln("<h2 class='mt-3'>Resultados de los lanzamientos de los dados</h2>");
 document.writeln("<ul>");
