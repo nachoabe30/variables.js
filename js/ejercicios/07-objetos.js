@@ -37,18 +37,19 @@ const pelicula ={
 
     //metodos
     //El metodo this hay que ponerlo dentro del objeto, le pedimos un dato dentro del objeto
-    reproducir: function (){
+    reproducir: function (this){
         document.writeln(`<p>Comenzo la peli ▶️ <b>${this.titulo}</b> </p>`)
     },
 
     //No se pueden poner this en este tipo de metodo
     detener: () =>{
-        document.writeln(`<p>La peli se detuvo ⏯️  </p>`)
+        document.writeln(`<p>La peli se detuvo ⏯️ </p>`)
     }
 }
 
+// this hace referencia al objeto global, en este caso al objeto window
+console.log(this); 
 // mostrar el objeto
-
 console.log(pelicula)
 document.writeln(`<h2 class='mt-3'>Objeto Pelicula</h2>`);
 document.writeln(`<p>Titulo: ${pelicula.titulo}</p>`);
