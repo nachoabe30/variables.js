@@ -24,28 +24,58 @@ mostrarDatos
 //molde para personas -->  (class). 1era letra mayuscula- singular
 class Persona {
 
+
+    //Como ponemos un atributo en privado
+    //Colocar el # tambien en el constructor
+    #email;
+    #direccion;
+
+
+    
+
     //constructor (encargado de crear las propiedades)
     constructor(nombre,apellido,fechaNacimiento,dni,email,direccion,telefono,contrasenia){
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
         this.dni = dni;
-        this.email = email;
-        this.direccion = direccion;
+        this.#email = email;
+        this.#direccion = direccion;
         this.telefono = telefono;
         this.contrasenia = contrasenia;
         //se pueden agregar atributos sin que esten en el contructor
-        this.edatdo = true;
+        this.estado = true;
     }
 
+    //Propiedades computadas (getters y setters)
+    //Get=leer un dato
+    //set=escribir un dato
+    //No tiene que ser identico al nombre con el #
+
+    get getEmail(){
+        return this.#email;
+    }
+    get getDireccion(){
+        return this.#direccion
+    }
+    //Debemos poner el parametro nuevo entre los ()
+    set setEmail(nuevoEmail){
+        this.#email = nuevoEmail;
+    }
+    set setDireccion(nuevaDireccion){
+        this.#direccion = nuevaDireccion;
+    }
+
+
     //metodos (Si o si con parentesis (puede haber parametros))
+    //Agregar en los metodos el privado
     mostrarDatos(){
         //Todo lo que quiero que haga el metodo
         document.writeln(`<ul>
             <li>Nombre y Apellido: ${this.apellido}</li>
-            <li>Email: ${this.email}</li>
+            <li>Email: ${this.#email}</li>
             <li>Telefono: ${this.telefono}</li>
-            <li>Direccion: ${this.direccion}</li>
+            <li>Direccion: ${this.#direccion}</li>
             </ul>`)
     }
 
@@ -63,6 +93,23 @@ class Persona {
 
 }
 
+//Clase hija (extends de persona)
+class alumno extends Persona{
+    #notas
+    #curso
+    constructor(nombre,apellido,fechaNacimiento,dni,email,direccion,telefono,contrasenia,comision,insignia,rollingCoins,asistencia,notas){
+        //Invocamos al constructor de persona (super)
+        super(nombre,apellido,fechaNacimiento,dni,email,direccion,telefono,contrasenia,comision)
+            this.comision = comision;
+            this.insignia = [];
+            this.rollingCoins = 0;
+            this.asistencia = 0;
+            this.#notas = [];
+            this.comision = comision;
+            this.#curso = curso;
+    }
+        
+    }
 //Logica de mi programa (Usar esa clase que hemos creado (persona))
 
 //New (Instanciamos una clase en especifico)
@@ -86,8 +133,17 @@ const agus = new Persona(
 Maxi.mostrarDatos();
 agus.mostrarDatos();
 
+//Mostrar el email antes de modificarlo (se pone normal el .email ya que hay getters y setters)
+document.writeln(`<h2>Consultar Email: ${Maxi.nuevoEmail}</h2>`);
+Maxi.setEmail = "Maxi@Gmail.com";
 
 //Encapsulamiento: No puedo manipular mis objetos facilmente
 //(Modificamos la propiedad del objeto)
-Maxi.email = "maxi@gmail.com";
 Maxi.mostrarDatos();
+
+
+//herencia: es la capacidad de compartir atributos y metodos entre objetos
+
+
+
+
